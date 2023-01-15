@@ -6,7 +6,6 @@ import (
 	"os"
 	"strings"
 
-	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris/v12/middleware/logger"
 	"github.com/kataras/iris/v12/middleware/recover"
 	"github.com/kataras/iris/v12/mvc"
@@ -14,18 +13,25 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+func Cors(ctx iris.Context) {
+	ctx.Header("Access-Control-Allow-Origin", "*")
+	ctx.Header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,PATCH,OPTIONS")
+	ctx.Header("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization")
+	ctx.Next()
+}
 func Router() {
 	app := iris.New()
 	app.Logger().SetLevel("warn")
 	app.Use(recover.New())
 	app.Use(logger.New())
-	app.Use(cors.New(cors.Options{
-		AllowedOrigins:   []string{"*"}, // allows everything, use that to change the hosts.
-		AllowCredentials: true,
-		MaxAge:           600,
-		AllowedMethods:   []string{iris.MethodGet, iris.MethodPost, iris.MethodOptions, iris.MethodHead, iris.MethodDelete, iris.MethodPut},
-		AllowedHeaders:   []string{"*"},
-	}))
+	app.Use(Cors)
+	//app.Use(cors.New(cors.Options{
+	//	AllowedOrigins:   []string{"*"}, // allows everything, use that to change the hosts.
+	//	AllowCredentials: true,
+	//	MaxAge:           600,
+	//	AllowedMethods:   []string{iris.MethodGet, iris.MethodPost, iris.MethodOptions, iris.MethodHead, iris.MethodDelete, iris.MethodPut},
+	//	AllowedHeaders:   []string{"*"},
+	//}))
 	app.AllowMethods(iris.MethodOptions)
 
 	app.OnAnyErrorCode(func(ctx iris.Context) {
