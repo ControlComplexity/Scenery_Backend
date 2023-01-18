@@ -34,15 +34,15 @@ CREATE TABLE `city` (
 INSERT INTO `city` VALUES ('1', 'dsafdsfds', '上海', 'shanghai', 'https://p3.itc.cn/images01/20200620/136b249b5b874054a0356382b11c67fc.jpeg');
 INSERT INTO `city` VALUES ('2', 'fsdfsd', '苏州', 'jiangsu', 'https://p2.itc.cn/images01/20200617/97669b1c6d2f485d8cd7f4eb0d512cc8.jpeg');
 INSERT INTO `city` VALUES ('3', 'fdvfd', '无锡', 'jiangsu', 'https://tour.jschina.com.cn/ztk/2020mryj/tpzs/202012/W020201229493998019332.jpg');
-INSERT INTO `city` VALUES ('4', 'dfvd', '常州', 'jiangsu\r\n', 'https://gjzx.jschina.com.cn/20375/202008/W020200824366115641047.jpg');
+INSERT INTO `city` VALUES ('4', 'dfvd', '常州', 'jiangsu', 'https://gjzx.jschina.com.cn/20375/202008/W020200824366115641047.jpg');
 INSERT INTO `city` VALUES ('5', 'sdvds', '镇江', 'jiangsu', 'https://dimg06.c-ctrip.com/images/fd/tg/g2/M00/8A/D7/Cghzf1Ww2RyAU7HOABCQqlMLIE8785.jpg');
 INSERT INTO `city` VALUES ('6', 'sdv', '南京', 'jiangsu', 'https://www.taicangdaily.com/upload/esite/20220416/e8a93a9f7eb747c1a8f8db0aa56a47cb.jpg');
 INSERT INTO `city` VALUES ('7', 'sdvds', '南通', 'jiangsu', 'https://boot-img.xuexi.cn/contribute_img/20200820161854/4286556001510421.jpg');
-INSERT INTO `city` VALUES ('8', 'sdvs', '扬州', 'jiangsu\r\n', 'https://p0.itc.cn/q_70/images03/20220912/5f39b3f846d949bd9e5c4adc9fc9f84a.jpeg');
+INSERT INTO `city` VALUES ('8', 'sdvs', '扬州', 'jiangsu', 'https://p0.itc.cn/q_70/images03/20220912/5f39b3f846d949bd9e5c4adc9fc9f84a.jpeg');
 INSERT INTO `city` VALUES ('9', 'sdv', '泰州', 'jiangsu', 'https://p0.itc.cn/images01/20210403/b330ca631e3a4f83bc17ea4c67f78ec4.jpeg');
 INSERT INTO `city` VALUES ('10', 'cdvds', '盐城', 'jiangsu', 'https://www.xhby.net/yc/yw/202012/W020201207350691001827.jpg');
 INSERT INTO `city` VALUES ('11', 'dsfv', '淮安', 'jiangsu', 'https://jsnews.jschina.com.cn/zt2020/zxk/xs/ha_xs/202111/W020211106784908714736.jpg');
-INSERT INTO `city` VALUES ('12', 'sdv', '宿迁', 'jiangsu\r\n', 'https://p5.itc.cn/q_70/images03/20220528/dbe637ef14b94999a314623842a4daeb.jpeg');
+INSERT INTO `city` VALUES ('12', 'sdv', '宿迁', 'jiangsu', 'https://p5.itc.cn/q_70/images03/20220528/dbe637ef14b94999a314623842a4daeb.jpeg');
 INSERT INTO `city` VALUES ('13', 'sdvs', '徐州', 'jiangsu', 'https://static.jstv.com/img/2019/1/14/20191141547441933021_187.jpg');
 INSERT INTO `city` VALUES ('14', 'sdvds', '连云港', 'jiangsu', 'https://5b0988e595225.cdn.sohucs.com/images/20171012/2d09ac5a567a4e07ad2e7d6215cb0b19.jpeg');
 INSERT INTO `city` VALUES ('15', 'rthrt', '杭州', 'zhejiang', 'https://p7.itc.cn/images01/20211008/296b7008e8ca49aca023aa3e171fb8d2.jpeg');
@@ -66,7 +66,6 @@ CREATE TABLE `essay` (
   `uuid` varchar(128) NOT NULL DEFAULT '' COMMENT '文章编号',
   `title` varchar(128) NOT NULL DEFAULT '' COMMENT '文章标题',
   `content` varchar(128) NOT NULL DEFAULT '' COMMENT '文章内容',
-  `url` varchar(128) NOT NULL DEFAULT '' COMMENT 'URL',
   `time` datetime(3) NOT NULL COMMENT '文章内容',
   `type` varchar(128) NOT NULL DEFAULT '' COMMENT '文章类型',
   `city` varchar(128) NOT NULL DEFAULT '' COMMENT '所在城市',
@@ -79,9 +78,9 @@ CREATE TABLE `essay` (
 -- ----------------------------
 -- Records of essay
 -- ----------------------------
-INSERT INTO `essay` VALUES ('1', 'sdfdsfds', '迪士尼', '迪士尼迪士尼', 'www.baidu.com', '2023-01-18 10:15:03.000', 'scenery', 'shanghai', 'a.jpg', '0', '0');
-INSERT INTO `essay` VALUES ('2', 'sdfdsfsdfewfewf', '西湖', '西湖西湖西湖', 'www.baidu.com', '2023-01-19 10:18:03.000', 'scenery', 'shanghai', 'b.jpg', '0', '0');
-INSERT INTO `essay` VALUES ('3', 'dfewfew', '园林', '苏州园林', 'www.baidu.com', '2023-01-18 10:20:33.000', 'scenery', 'suzhou', 'c.jpg', '0', '0');
+INSERT INTO `essay` VALUES ('1', 'sdfdsfds', '迪士尼', '迪士尼迪士尼',  '2023-01-18 10:15:03.000', 'scenery', 'shanghai', 'a.jpg', '0', '0');
+INSERT INTO `essay` VALUES ('2', 'sdfdsfsdfewfewf', '西湖', '西湖西湖西湖',  '2023-01-19 10:18:03.000', 'scenery', 'shanghai', 'b.jpg', '0', '0');
+INSERT INTO `essay` VALUES ('3', 'dfewfew', '园林', '苏州园林', '2023-01-18 10:20:33.000', 'scenery', 'suzhou', 'c.jpg', '0', '0');
 
 -- ----------------------------
 -- Table structure for exhibition
