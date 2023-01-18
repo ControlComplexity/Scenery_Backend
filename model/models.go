@@ -59,10 +59,10 @@ func (EssayDO) TableName() string {
 type CityDO struct {
 	Model
 	Uuid            string    `gorm:"column:uuid;type:varchar(128);not null;default:'';comment:文章编号"`
-	NameChinese     string    `gorm:"column:name;type:varchar(128);not null;default:'';comment:城市中文名称"`
+	NameChinese     string    `gorm:"column:name_chinese;type:varchar(128);not null;default:'';comment:城市中文名称"`
 	Name            string    `gorm:"column:name;type:varchar(128);not null;default:'';comment:城市名称"`
 	Province        string    `gorm:"column:province;type:varchar(128);not null;default:'';comment:省份"`
-	ProvinceChinese string    `gorm:"column:province;type:varchar(128);not null;default:'';comment:省份中文名称"`
+	ProvinceChinese string    `gorm:"column:province_chinese;type:varchar(128);not null;default:'';comment:省份中文名称"`
 	Image           string    `gorm:"column:image;type:varchar(128);not null;default:'';comment:图片"`
 	CreatedAt       time.Time `gorm:"column:created_at;type:timestamp;autoCreateTime;not null;default:CURRENT_TIMESTAMP;comment:创建时间"`
 	UpdatedAt       time.Time `gorm:"column:updated_at;type:timestamp;autoUpdateTime;not null;default:CURRENT_TIMESTAMP;comment:更新时间"`
@@ -78,7 +78,6 @@ type ExhibitionDO struct {
 	Uuid      string    `gorm:"column:uuid;type:varchar(128);not null;default:'';comment:文章编号"`
 	Title     string    `gorm:"column:title;type:varchar(128);not null;default:'';comment:文章标题"`
 	Content   string    `gorm:"column:content;type:varchar(128);not null;default:'';comment:文章内容"`
-	URL       string    `gorm:"column:url;type:varchar(128);not null;default:'';comment:URL"`
 	Time      time.Time `gorm:"column:time;type:time;not null;comment:文章内容"`
 	Type      string    `gorm:"column:type;type:varchar(128);not null;default:'';comment:文章类型"`
 	City      string    `gorm:"column:city;type:varchar(128);not null;default:'';comment:所在城市"`
