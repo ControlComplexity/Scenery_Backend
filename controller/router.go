@@ -25,13 +25,6 @@ func Router() {
 	app.Use(recover.New())
 	app.Use(logger.New())
 	app.Use(Cors)
-	//app.Use(cors.New(cors.Options{
-	//	AllowedOrigins:   []string{"*"}, // allows everything, use that to change the hosts.
-	//	AllowCredentials: true,
-	//	MaxAge:           600,
-	//	AllowedMethods:   []string{iris.MethodGet, iris.MethodPost, iris.MethodOptions, iris.MethodHead, iris.MethodDelete, iris.MethodPut},
-	//	AllowedHeaders:   []string{"*"},
-	//}))
 	app.AllowMethods(iris.MethodOptions)
 
 	app.OnAnyErrorCode(func(ctx iris.Context) {
@@ -51,6 +44,9 @@ func Router() {
 
 	mvc.Configure(app.Party("/api"), func(m *mvc.Application) {
 		m.Party("/essay").Handle(new(api.EssayController))
+		m.Party("/swiper").Handle(new(api.SwiperController))
+		m.Party("/exhibition").Handle(new(api.ExhibitionController))
+		m.Party("/city").Handle(new(api.CityController))
 	})
 
 	if err := app.Listen(":10013",

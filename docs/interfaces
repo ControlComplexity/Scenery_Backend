@@ -1,2 +1,28 @@
+文章
+
 1.获取全部文章
-http://127.0.0.1:10013/api/essay/essays
+http://{ip}:10013/api/essay/essays
+
+2.获取某一篇文章
+http://{ip}:10013/api/essay/essay/{id}
+
+3.获取相关文章
+http://{ip}:10013/api/essay/related
+
+4.获取文章排行榜
+http://{ip}:10013/api/essay/ranked
+
+
+
+轮播图
+1. 获取所有轮播图
+http://{ip}:10013/api/swiper/swipers
+
+
+展览
+1. 获取所有展览
+http://{ip}:10013/api/exhibition/exhibitions
+
+城市
+1.获取所有城市
+http://{ip}:10013/api/city/cities

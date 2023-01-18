@@ -572,11 +572,11 @@ func (app *Application) NewHost(srv *http.Server) *host.Supervisor {
 		if len(app.Hosts) == 0 { // print the version info on the first running host.
 			su.RegisterOnServe(func(h host.TaskHost) {
 				hasBuildInfo := BuildTime != "" && BuildRevision != ""
-				tab := " "
-				if hasBuildInfo {
-					tab = "   "
-				}
-				fmt.Fprintf(printer, "Iris Version:%s%s\n", tab, Version)
+				//tab := " "
+				//if hasBuildInfo {
+				//	tab = "   "
+				//}
+				//fmt.Fprintf(printer, "Iris Version:%s%s\n", tab, Version)
 
 				if hasBuildInfo {
 					fmt.Fprintf(printer, "Build Time:     %s\nBuild Revision: %s\n", BuildTime, BuildRevision)

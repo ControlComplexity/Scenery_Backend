@@ -2,7 +2,6 @@ package api
 
 import (
 	"Scenery_Backend/services"
-	"fmt"
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/sqls"
 	"github.com/mlogclub/simple/web"
@@ -13,9 +12,26 @@ type EssayController struct {
 	Ctx iris.Context
 }
 
-// 帖子列表
+// GetEssays 文章列表
 func (c *EssayController) GetEssays() *web.JsonResult {
 	essays := services.EssayService.Find(sqls.NewCnd().Desc("id"))
-	fmt.Print("GetEssays 123")
+	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
+}
+
+// GetBy 根据ID获取文章
+func (c *EssayController) GetBy(id int64) *web.JsonResult {
+	essays := services.EssayService.Get(id)
+	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
+}
+
+// GetRelated 相关文章列表
+func (c *EssayController) GetRelated() *web.JsonResult {
+	essays := services.EssayService.Find(sqls.NewCnd().Desc("id"))
+	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
+}
+
+// GetRanked 文章排行榜
+func (c *EssayController) GetRanked() *web.JsonResult {
+	essays := services.EssayService.Find(sqls.NewCnd().Desc("hits"))
 	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
 }

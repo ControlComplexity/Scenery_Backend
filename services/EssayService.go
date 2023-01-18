@@ -14,11 +14,10 @@ func newEssayService() *essayService {
 
 type essayService struct{}
 
-// GetEssays 文章列表
-//func (s *essayService) GetEssays() (essays []model.EssayDO, nextCursor int64, hasMore bool) {
-//	return s.Find()
-//}
-
 func (s *essayService) Find(cnd *sqls.Cnd) []model.EssayDO {
 	return repositories.EssayRepository.Find(sqls.DB(), cnd)
+}
+
+func (s *essayService) Get(id int64) interface{} {
+	return repositories.EssayRepository.Get(sqls.DB(), id)
 }
