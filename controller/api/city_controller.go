@@ -3,6 +3,7 @@ package api
 import (
 	"Scenery_Backend/model"
 	"Scenery_Backend/services"
+	"fmt"
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/sqls"
 	"github.com/mlogclub/simple/web"
@@ -24,23 +25,31 @@ type CityList struct {
 }
 
 type Province struct {
-	Name   string
-	Cities []model.CityDO
+	ChineseName string
+	Cities      []model.CityDO
 }
 
-func renderCities(cities []model.CityDO) map[string][]model.CityDO {
+func renderCities(cities []model.CityDO) []Province {
 	set := make(map[string][]model.CityDO, 0)
 	for _, v := range cities {
-		if _, ok := set[v.Province]; !ok {
+		if _, ok := set[v.ProvinceChinese]; !ok {
 			// 去重
 			c := make([]model.CityDO, 0)
 			c = append(c, v)
-			set[v.Province] = c
+			set[v.ProvinceChinese] = c
 		} else {
-			c := set[v.Province]
+			c := set[v.ProvinceChinese]
 			c = append(c, v)
-			set[v.Province] = c
+			set[v.ProvinceChinese] = c
 		}
 	}
-	return set
+	provinces := make([]Province, 0)
+	for k, v := range set {
+		fmt.Printf("k=%v v=%v\n", k, v)
+		provinces = append(provinces, Province{
+			ChineseName: k,
+			Cities:      v,
+		})
+	}
+	return provinces
 }

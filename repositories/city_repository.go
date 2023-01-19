@@ -2,7 +2,6 @@ package repositories
 
 import (
 	"Scenery_Backend/model"
-	"fmt"
 	"github.com/mlogclub/simple/sqls"
 	"gorm.io/gorm"
 )
@@ -18,7 +17,6 @@ type cityRepository struct {
 
 func (r *cityRepository) Find(db *gorm.DB, cnd *sqls.Cnd) (list []model.CityDO) {
 	cnd.Find(db, &list)
-	fmt.Print("list: ", list)
 	return
 }
 

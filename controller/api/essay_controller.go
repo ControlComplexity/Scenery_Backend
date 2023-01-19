@@ -24,14 +24,14 @@ func (c *EssayController) GetBy(id int64) *web.JsonResult {
 	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
 }
 
-// GetRelated 相关文章列表
-func (c *EssayController) GetRelated() *web.JsonResult {
-	essays := services.EssayService.Find(sqls.NewCnd().Desc("id"))
+// GetRelatedBy 相关文章列表
+func (c *EssayController) GetRelatedBy(id int64) *web.JsonResult {
+	essays := services.EssayService.FindRelated(sqls.NewCnd().Desc("id"))
 	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
 }
 
 // GetRanked 文章排行榜
 func (c *EssayController) GetRanked() *web.JsonResult {
-	essays := services.EssayService.Find(sqls.NewCnd().Desc("hits"))
+	essays := services.EssayService.FindRanked(sqls.NewCnd().Desc("hits"))
 	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
 }
