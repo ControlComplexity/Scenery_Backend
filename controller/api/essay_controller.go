@@ -2,10 +2,11 @@ package api
 
 import (
 	"Scenery_Backend/services"
+	"fmt"
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/sqls"
 	"github.com/mlogclub/simple/web"
-	"strconv"
+	"github.com/mlogclub/simple/web/params"
 )
 
 type EssayController struct {
@@ -14,24 +15,30 @@ type EssayController struct {
 
 // GetEssays 文章列表
 func (c *EssayController) GetEssays() *web.JsonResult {
-	essays := services.EssayService.Find(sqls.NewCnd().Desc("id"))
-	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
+	var (
+		pageSize = params.FormValueInt64Default(c.Ctx, "pageSize", 0)
+		pageNum  = params.FormValueInt64Default(c.Ctx, "pageNum", 0)
+	)
+	fmt.Println("pageSize: ", pageSize, " pageNum: ", pageNum)
+	essays, paging := services.EssayService.Find(sqls.NewCnd().Page(int(pageNum), int(pageSize)).Desc("id"))
+	return web.JsonPageData(essays, paging)
 }
 
 // GetBy 根据ID获取文章
 func (c *EssayController) GetBy(id int64) *web.JsonResult {
 	essays := services.EssayService.Get(id)
-	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
+	return web.JsonPageData(essays, nil)
 }
 
-// GetRelatedBy 相关文章列表
-func (c *EssayController) GetRelatedBy(id int64) *web.JsonResult {
-	essays := services.EssayService.FindRelated(sqls.NewCnd().Desc("id"))
-	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
+// GetRelated 相关文章列表
+func (c *EssayController) GetRelated() *web.JsonResult {
+	essays, paging := services.EssayService.FindRelated(params.NewQueryParams(c.Ctx).
+		EqByReq("city").EqByReq("type").PageByReq().Desc("id"))
+	return web.JsonPageData(essays, paging)
 }
 
 // GetRanked 文章排行榜
 func (c *EssayController) GetRanked() *web.JsonResult {
-	essays := services.EssayService.FindRanked(sqls.NewCnd().Desc("hits"))
-	return web.JsonCursorData(essays, strconv.FormatInt(123, 10), true)
+	essays, paging := services.EssayService.FindRanked(params.NewQueryParams(c.Ctx).EqByReq("city").PageByReq().Desc("hits"))
+	return web.JsonPageData(essays, paging)
 }

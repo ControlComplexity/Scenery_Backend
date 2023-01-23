@@ -7,7 +7,6 @@ import (
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/sqls"
 	"github.com/mlogclub/simple/web"
-	"strconv"
 )
 
 type CityController struct {
@@ -17,7 +16,7 @@ type CityController struct {
 // GetCities 文章列表
 func (c *CityController) GetCities() *web.JsonResult {
 	cities := services.CityService.Find(sqls.NewCnd().Desc("id"))
-	return web.JsonCursorData(renderCities(cities), strconv.FormatInt(123, 10), true)
+	return web.JsonPageData(renderCities(cities), nil)
 }
 
 type CityList struct {

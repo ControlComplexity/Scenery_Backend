@@ -16,8 +16,14 @@ func newExhibitionRepository() *exhibitionRepository {
 type exhibitionRepository struct {
 }
 
-func (r *exhibitionRepository) Find(db *gorm.DB, cnd *sqls.Cnd) (list []model.ExhibitionDO) {
+func (r *exhibitionRepository) Find(db *gorm.DB, cnd *sqls.Cnd) (list []model.ExhibitionDO, paging *sqls.Paging) {
 	cnd.Find(db, &list)
+	count := cnd.Count(db, &model.ExhibitionDO{})
+	paging = &sqls.Paging{
+		Page:  cnd.Paging.Page,
+		Limit: cnd.Paging.Limit,
+		Total: count,
+	}
 	fmt.Print("list: ", list)
 	return
 }

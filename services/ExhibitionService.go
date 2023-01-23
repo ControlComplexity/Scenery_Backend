@@ -14,7 +14,7 @@ func newExhibitionService() *exhibitionService {
 
 type exhibitionService struct{}
 
-func (s *exhibitionService) Find(cnd *sqls.Cnd) []model.ExhibitionDO {
+func (s *exhibitionService) Find(cnd *sqls.Cnd) ([]model.ExhibitionDO, *sqls.Paging) {
 	return repositories.ExhibitionRepository.Find(sqls.DB(), cnd)
 }
 

@@ -4,6 +4,7 @@ import (
 	"github.com/kataras/iris/v12"
 	"github.com/mlogclub/simple/common/strs/strcase"
 	"github.com/mlogclub/simple/sqls"
+	"fmt"
 )
 
 type QueryParams struct {
@@ -30,6 +31,8 @@ func (q *QueryParams) EqByReq(column string) *QueryParams {
 	if len(value) > 0 {
 		q.Eq(column, value)
 	}
+	fmt.Print("value: ", value, " column: ", column)
+	fmt.Print("len(value): ", len(value))
 	return q
 }
 
