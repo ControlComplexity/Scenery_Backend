@@ -2,9 +2,7 @@ package api
 
 import (
 	"Scenery_Backend/services"
-	"fmt"
 	"github.com/kataras/iris/v12"
-	"github.com/mlogclub/simple/sqls"
 	"github.com/mlogclub/simple/web"
 	"github.com/mlogclub/simple/web/params"
 )
@@ -15,12 +13,8 @@ type EssayController struct {
 
 // GetEssays 文章列表
 func (c *EssayController) GetEssays() *web.JsonResult {
-	var (
-		pageSize = params.FormValueInt64Default(c.Ctx, "pageSize", 0)
-		pageNum  = params.FormValueInt64Default(c.Ctx, "pageNum", 0)
-	)
-	fmt.Println("pageSize: ", pageSize, " pageNum: ", pageNum)
-	essays, paging := services.EssayService.Find(sqls.NewCnd().Page(int(pageNum), int(pageSize)).Desc("id"))
+	essays, paging := services.EssayService.Find(params.NewQueryParams(c.Ctx).
+		EqByReq("type").EqByReq("city").LikeByReq("title").PageByReq().Desc("id"))
 	return web.JsonPageData(essays, paging)
 }
 

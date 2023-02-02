@@ -1,0 +1,5 @@
+1、解决防火墙问题
+firewall-cmd --zone=public --add-port=10013/tcp --permanent
+systemctl restart firewalld.service
+firewall-cmd --list-ports
+

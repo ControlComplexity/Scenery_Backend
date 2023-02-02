@@ -47,6 +47,7 @@ func Router() {
 		m.Party("/swiper").Handle(new(api.SwiperController))
 		m.Party("/exhibition").Handle(new(api.ExhibitionController))
 		m.Party("/city").Handle(new(api.CityController))
+		m.Party("/home").Handle(new(api.HomeController))
 	})
 
 	if err := app.Listen(":10013",

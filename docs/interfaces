@@ -1,18 +1,19 @@
 文章
 
 1.获取全部文章
-http://{ip}:10013/api/essay/essays
+http://127.0.0.1:10013/api/essay/essays?type=scenery&city=suzhou&title=园&limit=1&page=1
 
 2.获取某一篇文章
 http://{ip}:10013/api/essay/{id}
 
 3.获取相关文章
-http://{ip}:10013/api/essay/related
+http://{ip}:10013/api/essay/related?type=scenery&city=shanghai
 
 4.获取文章排行榜
 http://{ip}:10013/api/essay/ranked
 
-
+5. 获取首页文章
+http://{ip}:10013/api/home/home?type=scenery&city=suzhou
 
 轮播图
 1. 获取所有轮播图

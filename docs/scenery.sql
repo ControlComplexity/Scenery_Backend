@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80031
 File Encoding         : 65001
 
-Date: 2023-01-23 20:30:59
+Date: 2023-02-02 22:12:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,7 +43,7 @@ INSERT INTO `city` VALUES ('5', 'sdvds', '镇江', 'zhengjiang', '江苏', 'jian
 INSERT INTO `city` VALUES ('6', 'sdv', '南京', 'nanjing', '江苏', 'jiangsu', 'https://www.taicangdaily.com/upload/esite/20220416/e8a93a9f7eb747c1a8f8db0aa56a47cb.jpg', null, null);
 INSERT INTO `city` VALUES ('7', 'sdvds', '南通', 'nantong', '江苏', 'jiangsu', 'https://boot-img.xuexi.cn/contribute_img/20200820161854/4286556001510421.jpg', null, null);
 INSERT INTO `city` VALUES ('8', 'sdvs', '扬州', 'yangzhou', '江苏', 'jiangsu', 'https://p0.itc.cn/q_70/images03/20220912/5f39b3f846d949bd9e5c4adc9fc9f84a.jpeg', null, null);
-INSERT INTO `city` VALUES ('9', 'sdv', '泰州', 'taizhou', '江苏', 'jiangsu', 'https://p0.itc.cn/images01/20210403/b330ca631e3a4f83bc17ea4c67f78ec4.jpeg', null, null);
+INSERT INTO `city` VALUES ('9', 'sdv', '泰州', 'taizhou1', '江苏', 'jiangsu', 'https://p0.itc.cn/images01/20210403/b330ca631e3a4f83bc17ea4c67f78ec4.jpeg', '2023-02-02 22:08:12', '2023-02-02 22:08:12');
 INSERT INTO `city` VALUES ('10', 'cdvds', '盐城', 'yancheng', '江苏', 'jiangsu', 'https://www.xhby.net/yc/yw/202012/W020201207350691001827.jpg', null, null);
 INSERT INTO `city` VALUES ('11', 'dsfv', '淮安', 'huaian', '江苏', 'jiangsu', 'https://jsnews.jschina.com.cn/zt2020/zxk/xs/ha_xs/202111/W020211106784908714736.jpg', null, null);
 INSERT INTO `city` VALUES ('12', 'sdv', '宿迁', 'suqian', '江苏', 'jiangsu', 'https://p5.itc.cn/q_70/images03/20220528/dbe637ef14b94999a314623842a4daeb.jpeg', null, null);
@@ -77,17 +77,18 @@ CREATE TABLE `essay` (
   `image` varchar(128) NOT NULL DEFAULT '' COMMENT '图片',
   `hits` bigint NOT NULL DEFAULT '0' COMMENT '访问量',
   `like` bigint NOT NULL DEFAULT '0' COMMENT '喜欢次数',
+  `display_home_page` tinyint(1) NOT NULL COMMENT '是否在首页展示。1为是，0为否',
   `created_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`,`display_home_page`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 -- ----------------------------
 -- Records of essay
 -- ----------------------------
-INSERT INTO `essay` VALUES ('1', 'sdfdsfds', '迪士尼', '迪士尼迪士尼', 'www.baidu.com', '2023-01-18 10:15:03.000', 'scenery', 'shanghai', 'a.jpg', '4', '0', '2023-01-23 20:21:29', '2023-01-23 20:21:29');
-INSERT INTO `essay` VALUES ('2', 'sdfdsfsdfewfewf', '西湖', '西湖西湖西湖', 'www.baidu.com', '2023-01-19 10:18:03.000', 'scenery', 'hangzhou', 'b.jpg', '0', '0', '2023-01-23 20:30:11', '2023-01-23 20:30:11');
-INSERT INTO `essay` VALUES ('3', 'dfewfew', '园林', '苏州园林', 'www.baidu.com', '2023-01-18 10:20:33.000', 'scenery', 'suzhou', 'c.jpg', '1', '0', '2023-01-23 20:21:32', '2023-01-23 20:21:32');
+INSERT INTO `essay` VALUES ('1', 'sdfdsfds', '迪士尼', '迪士尼迪士尼', 'www.baidu.com', '2023-01-18 10:15:03.000', 'scenery', 'shanghai', 'a.jpg', '4', '0', '1', '2023-02-02 22:00:30', '2023-02-02 22:00:30');
+INSERT INTO `essay` VALUES ('2', 'sdfdsfsdfewfewf', '西湖', '西湖西湖西湖', 'www.baidu.com', '2023-01-19 10:18:03.000', 'scenery', 'hangzhou', 'b.jpg', '0', '0', '1', '2023-02-02 22:01:37', '2023-02-02 22:01:37');
+INSERT INTO `essay` VALUES ('3', 'dfewfew', '园林', '苏州园林', 'www.baidu.com', '2023-01-18 10:20:33.000', 'scenery', 'suzhou', 'c.jpg', '1', '0', '1', '2023-02-02 22:01:39', '2023-02-02 22:01:39');
 
 -- ----------------------------
 -- Table structure for exhibition

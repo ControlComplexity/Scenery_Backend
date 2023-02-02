@@ -1,4 +1,4 @@
-LogFile: /data/logs/bbs-go.log # 日志文件
+LogFile: /data/logs/scenery.log # 日志文件
 DB:
   Url: root:root@tcp(101.43.39.188:3306)/scenery?charset=utf8mb4&parseTime=True&loc=Local
 #  Url: root:root@tcp(127.0.0.1:3306)/scenery?charset=utf8mb4&parseTime=True&loc=Local
