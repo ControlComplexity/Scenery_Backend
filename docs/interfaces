@@ -15,10 +15,15 @@ http://{ip}:10013/api/essay/ranked
 5. 获取首页文章
 http://{ip}:10013/api/home/home?type=scenery&city=suzhou
 
+6. 点击量+1
+http://{ip}:10013/api/essay/hit?id=2
+
+7. 喜欢量+1
+http://{ip}:10013/api/essay/like?id=3
+
 轮播图
 1. 获取所有轮播图
 http://{ip}:10013/api/swiper/swipers
-
 
 展览
 1. 获取所有展览

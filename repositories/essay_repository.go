@@ -59,3 +59,13 @@ func (r *essayRepository) Get(db *gorm.DB, id int64) *model.EssayDO {
 	}
 	return ret
 }
+
+func (r *essayRepository) Updates(db *gorm.DB, id int64, columns map[string]interface{}) (err error) {
+	err = db.Model(&model.EssayDO{}).Where("id = ?", id).Updates(columns).Error
+	return
+}
+
+func (r *essayRepository) UpdateColumn(db *gorm.DB, id int64, name string, value interface{}) (err error) {
+	err = db.Model(&model.EssayDO{}).Where("id = ?", id).UpdateColumn(name, value).Error
+	return
+}

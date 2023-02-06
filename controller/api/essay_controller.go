@@ -36,3 +36,29 @@ func (c *EssayController) GetRanked() *web.JsonResult {
 	essays, paging := services.EssayService.FindRanked(params.NewQueryParams(c.Ctx).EqByReq("city").PageByReq().Desc("hits"))
 	return web.JsonPageData(essays, paging)
 }
+
+// GetHit 点击量加1
+func (c *EssayController) GetHit() *web.JsonResult {
+	id, err := params.FormValueInt64(c.Ctx, "id")
+	if err != nil {
+		return web.JsonError(err)
+	}
+	e := services.EssayService.AddHit(id)
+	if e != nil {
+		return web.JsonError(e)
+	}
+	return web.JsonSuccess()
+}
+
+// GetLike 喜爱次数加1
+func (c *EssayController) GetLike() *web.JsonResult {
+	id, err := params.FormValueInt64(c.Ctx, "id")
+	if err != nil {
+		return web.JsonError(err)
+	}
+	e := services.EssayService.AddLike(id)
+	if e != nil {
+		return web.JsonError(e)
+	}
+	return web.JsonSuccess()
+}
