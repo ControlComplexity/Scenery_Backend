@@ -40,7 +40,8 @@ type EssayDO struct {
 	Model
 	Uuid            string    `gorm:"column:uuid;type:varchar(128);not null;default:'';comment:文章编号"`
 	Title           string    `gorm:"column:title;type:varchar(128);not null;default:'';comment:文章标题"`
-	Content         string    `gorm:"column:content;type:varchar(128);not null;default:'';comment:文章内容"`
+	Abstract        string    `gorm:"column:abstract;type:varchar(300);not null;default:'';comment:文章摘要"`
+	Content         string    `gorm:"column:content;type:varchar(3000);not null;default:'';comment:文章内容"`
 	Time            time.Time `gorm:"column:time;type:time;not null;comment:文章内容"`
 	Type            string    `gorm:"column:type;type:varchar(128);not null;default:'';comment:文章类型"`
 	City            string    `gorm:"column:city;type:varchar(128);not null;default:'';comment:所在城市"`
