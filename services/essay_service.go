@@ -37,7 +37,7 @@ func (s *essayService) Get(id int64) *model.EssayDO {
 // AddHit 点击量+1
 func (s *essayService) AddHit(essayId int64) error {
 	essay := s.Get(essayId)
-	if essay == nil || essay.Uuid == "" {
+	if essay == nil || essay.Title == "" {
 		return errors.New("文章不存在")
 	}
 	hits := essay.Hits

@@ -46,6 +46,7 @@ type EssayDO struct {
 	Type            string    `gorm:"column:type;type:varchar(128);not null;default:'';comment:文章类型"`
 	City            string    `gorm:"column:city;type:varchar(128);not null;default:'';comment:所在城市"`
 	Image           string    `gorm:"column:image;type:varchar(128);not null;default:'';comment:图片"`
+	HomeImage       string    `gorm:"column:home_image;type:varchar(128);not null;default:'';comment:首页图片"`
 	Hits            int64     `gorm:"column:hits;type:int;not null;default:0;comment:访问量"`
 	Like            int64     `gorm:"column:like;type:int;not null;default:0;comment:喜欢次数"`
 	DisplayHomePage int32     `gorm:"column:display_home_page;type:int;not null;default:0;comment:是否在首页展示"`
